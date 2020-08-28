@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    if: github.event.base_ref == 'refs/heads/master'
+    if: github.event.base_ref == 'update-ci'
     runs-on: ubuntu-latest
 
     steps:
