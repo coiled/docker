@@ -2,7 +2,7 @@ name: Build and deploy latest
 
 on:
   push:
-    branches: "update-ci"
+    branches: "master"
 
 jobs:
   build:
