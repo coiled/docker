@@ -12,6 +12,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     
-    - name: Docker build
-      run: docker build -t coiled/default .
+    - name: Build default
+      run: docker build -t coiled/default default
+
+    - name: Build test-conda-env-name
+      run: docker build -t coiled/test-conda-env-name test-conda-env-name
     
