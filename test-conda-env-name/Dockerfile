@@ -1,6 +1,6 @@
 FROM coiled/default:latest
 
-RUN conda create -n foo
+RUN conda create -n foo -c conda-forge python=3.8
 
 ENV TINI_VERSION v0.16.1
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
