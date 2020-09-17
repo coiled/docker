@@ -7,27 +7,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ["default", "notebook", "test-conda-env-name"]
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
     
-    - name: Build and push default image
+    - name: Build and push ${{ matrix.image }} image
       uses: docker/build-push-action@v1
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: coiled/default
-        path: default
-        tag_with_ref: true
-        tag_with_sha: true
-
-    - name: Build and push test-conda-env-name image
-      uses: docker/build-push-action@v1
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        path: test-conda-env-name
-        repository: coiled/test-conda-env-name
+        repository: coiled/${{ matrix.image }}
+        path: ${{ matrix.image }}
         tag_with_ref: true
         tag_with_sha: true

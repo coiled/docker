@@ -7,14 +7,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ["default", "notebook", "test-conda-env-name"]
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
     
-    - name: Build default
-      run: docker build -t coiled/default default
-
-    - name: Build test-conda-env-name
-      run: docker build -t coiled/test-conda-env-name test-conda-env-name
-    
+    - name: Build ${{ matrix.image }} 
+      run: docker build -t coiled/${{ matrix.image }}  ${{ matrix.image }} 
