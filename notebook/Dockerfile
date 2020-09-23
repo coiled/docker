@@ -13,7 +13,8 @@ RUN conda install --yes \
     -c conda-forge \
     ipywidgets \
     dask-labextension==3.0.0 \
-    && jupyter labextension install @jupyter-widgets/jupyterlab-manager dask-labextension@3.0.0 \
+    jupyter-offlinenotebook \
+    && jupyter labextension install @jupyter-widgets/jupyterlab-manager dask-labextension@3.0.0 jupyter-offlinenotebook \
     && conda clean -tipsy \
     && jupyter lab clean \
     && jlpm cache clean \
