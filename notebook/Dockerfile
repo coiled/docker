@@ -9,9 +9,7 @@ RUN apt-get update \
 
 USER $NB_USER
 
-RUN conda create -n coiled \
-    && echo "conda activate coiled" >> ~/.bashrc \
-    && conda install --yes \
+RUN conda create -y -n coiled \
     -c conda-forge \
     ipywidgets \
     dask-labextension==3.0.0 \
@@ -21,8 +19,9 @@ RUN conda create -n coiled \
     && jupyter lab clean \
     && jlpm cache clean \
     && npm cache clean --force \
-    && find /opt/conda/ -type f,l -name '*.a' -delete \
-    && find /opt/conda/ -type f,l -name '*.pyc' -delete \
-    && find /opt/conda/ -type f,l -name '*.js.map' -delete \
-    && find /opt/conda/lib/python*/site-packages/bokeh/server/static -type f,l -name '*.js' -not -name '*.min.js' -delete \
-    && rm -rf /opt/conda/pkgs
+    && find /opt/conda/envs/coiled/ -type f,l -name '*.a' -delete \
+    && find /opt/conda/envs/coiled/ -type f,l -name '*.pyc' -delete \
+    && find /opt/conda/envs/coiled/ -type f,l -name '*.js.map' -delete \
+    && find /opt/conda/envs/coiled/lib/python*/site-packages/bokeh/server/static -type f,l -name '*.js' -not -name '*.min.js' -delete \
+    && rm -rf /opt/conda/envs/coiled/pkgs \
+    && echo "conda activate coiled" >> ~/.bashrc
