@@ -11,7 +11,7 @@ USER $NB_USER
 
 RUN conda create -n coiled \
     && echo "conda activate coiled" >> ~/.bashrc \
-    conda install --yes \
+    && conda install --yes \
     -c conda-forge \
     ipywidgets \
     dask-labextension==3.0.0 \
