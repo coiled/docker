@@ -1,4 +1,4 @@
-FROM jupyter/base-notebook:lab-2.2.5
+FROM jupyter/base-notebook:lab-2.2.9
 
 USER root
 
@@ -9,7 +9,9 @@ RUN apt-get update \
 
 USER $NB_USER
 
-RUN conda install --yes \
+RUN conda create -n coiled \
+    && echo "conda activate coiled" >> ~/.bashrc \
+    conda install --yes \
     -c conda-forge \
     ipywidgets \
     dask-labextension==3.0.0 \
