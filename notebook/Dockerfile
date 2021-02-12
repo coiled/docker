@@ -1,4 +1,4 @@
-FROM jupyter/base-notebook:lab-2.2.9
+FROM jupyter/base-notebook:lab-3.0.5
 
 USER root
 
@@ -15,7 +15,6 @@ RUN conda create -y -n coiled \
     ipywidgets \
     dask-labextension>=5 \
     jupyter-offlinenotebook \
-    && jupyter labextension install @jupyter-widgets/jupyterlab-manager dask-labextension jupyter-offlinenotebook \
     && conda clean -tipsy \
     && jupyter lab clean \
     && jlpm cache clean \
