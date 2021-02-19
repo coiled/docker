@@ -11,8 +11,11 @@ USER $NB_USER
 
 RUN conda create -y -n coiled \
     -c conda-forge \
+    # Dask does not fully support Python 3.9 yet
+    python=3.8 \
     jupyterlab=3 \
     ipywidgets \
+    # Pinning >=5 to be compatible with JupyterLab 3+
     dask-labextension>=5 \
     jupyter-offlinenotebook \
     && conda clean -tipsy \
