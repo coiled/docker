@@ -1,4 +1,4 @@
-FROM jupyter/base-notebook:lab-3.0.5
+FROM jupyter/base-notebook:lab-2.2.9
 
 USER root
 
@@ -13,11 +13,11 @@ RUN conda create -y -n coiled \
     -c conda-forge \
     # Dask does not fully support Python 3.9 yet
     python=3.8 \
-    jupyterlab=3 \
+    "jupyterlab<3" \
     ipywidgets \
-    # Pinning >=5 to be compatible with JupyterLab 3+
-    dask-labextension>=5 \
+    dask-labextension==3.0.0 \
     jupyter-offlinenotebook \
+    && jupyter labextension install @jupyter-widgets/jupyterlab-manager dask-labextension@3.0.0 jupyter-offlinenotebook \
     && conda clean -tipsy \
     && jupyter lab clean \
     && jlpm cache clean \
