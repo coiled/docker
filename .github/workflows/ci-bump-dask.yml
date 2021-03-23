@@ -34,7 +34,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update Dask version to ${{ steps.latest_version.outputs.version }}"
           title: "Update Dask version to ${{ steps.latest_version.outputs.version }}"
-          reviewers: "jrbourbeau"
+          reviewers: "jrbourbeau,ian-r-rose"
           branch: "upgrade-package-versions"
           body: |
             A new Dask version has been detected.
