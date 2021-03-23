@@ -23,7 +23,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
           find: "dask=.*[0-9]+"
-          replace: "dask=${{ steps.latest_version.outputs.version }} "
+          replace: "dask=${{ steps.latest_version.outputs.version }}"
 
       - name: Output changed files
         run: echo ${{ steps.find_and_replace.outputs.modifiedFiles }}
