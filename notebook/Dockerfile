@@ -15,6 +15,7 @@ RUN conda create -y -n coiled \
     python=3.8 \
     "jupyterlab<3" \
     ipywidgets \
+    dask=2021.3.0 \
     dask-labextension==3.0.0 \
     jupyter-offlinenotebook \
     && jupyter labextension install @jupyter-widgets/jupyterlab-manager dask-labextension@3.0.0 jupyter-offlinenotebook \
