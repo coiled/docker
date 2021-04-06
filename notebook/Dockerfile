@@ -3,7 +3,7 @@ FROM jupyter/base-notebook:lab-2.2.9
 USER root
 
 RUN apt-get update \
-    && apt-get install -yq --no-install-recommends gcc git \
+    && apt-get install -yq --no-install-recommends build-essential git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
