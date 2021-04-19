@@ -1,4 +1,4 @@
-FROM jupyter/base-notebook:lab-2.2.9
+FROM jupyter/base-notebook:lab-3.0.14
 
 USER root
 
@@ -11,21 +11,13 @@ USER $NB_USER
 
 RUN conda create -y -n coiled \
     -c conda-forge \
-    # Dask does not fully support Python 3.9 yet
-    python=3.8 \
-    "jupyterlab<3" \
-    ipywidgets \
+    python=3.9 \
     dask=2021.4.0  \
-    dask-labextension==3.0.0 \
-    jupyter-offlinenotebook \
-    && jupyter labextension install @jupyter-widgets/jupyterlab-manager dask-labextension@3.0.0 jupyter-offlinenotebook \
     && conda clean -tipsy \
-    && jupyter lab clean \
-    && jlpm cache clean \
-    && npm cache clean --force \
     && find /opt/conda/envs/coiled/ -type f,l -name '*.a' -delete \
     && find /opt/conda/envs/coiled/ -type f,l -name '*.pyc' -delete \
     && find /opt/conda/envs/coiled/ -type f,l -name '*.js.map' -delete \
     && find /opt/conda/envs/coiled/lib/python*/site-packages/bokeh/server/static -type f,l -name '*.js' -not -name '*.min.js' -delete \
     && rm -rf /opt/conda/envs/coiled/pkgs \
     && echo "conda activate coiled" >> ~/.bashrc
+RUN conda run -n coiled python -m pip install jupyterlab==3 ipywidgets dask-labextension jupyter-offlinenotebook
