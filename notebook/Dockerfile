@@ -20,4 +20,4 @@ RUN conda create -y -n coiled \
     && find /opt/conda/envs/coiled/lib/python*/site-packages/bokeh/server/static -type f,l -name '*.js' -not -name '*.min.js' -delete \
     && rm -rf /opt/conda/envs/coiled/pkgs \
     && echo "conda activate coiled" >> ~/.bashrc
-RUN conda run -n coiled python -m pip install jupyterlab==3 ipywidgets dask-labextension jupyter-offlinenotebook
+RUN conda run -n coiled python -m pip install "jupyterlab>=3,\<4" ipywidgets dask-labextension jupyter-offlinenotebook
