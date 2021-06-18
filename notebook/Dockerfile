@@ -12,7 +12,7 @@ USER $NB_USER
 RUN conda create -y -n coiled \
     -c conda-forge \
     python=3.9 \
-    dask=2021.6.0  \
+    dask=2021.6.1  \
     && conda clean -tipsy \
     && find /opt/conda/envs/coiled/ -type f,l -name '*.a' -delete \
     && find /opt/conda/envs/coiled/ -type f,l -name '*.pyc' -delete \
