@@ -12,7 +12,7 @@ USER $NB_USER
 RUN conda create -y -n coiled \
     -c conda-forge \
     python=3.9 \
-    dask=2021.7.0  \
+    dask=2021.7.1  \
     jupyterlab~=3.0 \
     ipywidgets \
     dask-labextension \
